@@ -1,7 +1,7 @@
 # Preço da Hora Bahia - Integração com API (Java)
 
 Este projeto é uma implementação em Java que interage com a API privada do [Preço da Hora Bahia](https://precodahora.ba.gov.br/) para buscar produtos e preços com base em termos de pesquisa e localização (latitude e longitude). O Preço da Hora é um sistema desenvolvido na Região Nordeste do Brasil para fornecer informações precisas e atualizadas sobre os preços praticados no mercado local. O sistema permite que cidadãos acessem informações sobre mais de 500 mil produtos comercializados em toda a Bahia.
-
+![alt text](<imagem.png>)
 
 # Principais Características
 - Cobertura Abrangente: Acesso a preços de produtos de até 180 mil estabelecimentos em 417 municípios baianos.
