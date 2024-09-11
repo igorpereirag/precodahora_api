@@ -3,12 +3,12 @@
 Este projeto é uma implementação em Java que interage com a API privada do [Preço da Hora Bahia](https://precodahora.ba.gov.br/) para buscar produtos e preços com base em termos de pesquisa e localização (latitude e longitude). O Preço da Hora é um sistema desenvolvido na Região Nordeste do Brasil para fornecer informações precisas e atualizadas sobre os preços praticados no mercado local. O sistema permite que cidadãos acessem informações sobre mais de 500 mil produtos comercializados em toda a Bahia.
 ![alt text](src/main/resources/assets/screenshot.png)
 
-# Principais Características
+## Principais Características
 - Cobertura Abrangente: Acesso a preços de produtos de até 180 mil estabelecimentos em 417 municípios baianos.
 - Alta Frequência de Dados: Processa, em média, 3,8 milhões de notas fiscais diariamente, com picos superiores a 4,6 milhões.
 
 
-# Sobre os Dados
+## Sobre os Dados
 Os dados apresentados são oriundos das Notas Fiscais do Consumidor Eletrônicas (NFC-e, modelo 65) e das Notas Fiscais Eletrônicas (NF-e, modelo 55), autorizadas pela Secretaria da Fazenda do Estado da Bahia (SEFAZ-BA). As informações incluem preço, descrição do produto e código de barras, e são baseadas nas notas fiscais emitidas pelos estabelecimentos comerciais.
 
 - Dados Públicos: Os preços e descrições dos produtos são obtidos diretamente das NF-e e NFC-e e são de responsabilidade dos contribuintes.
