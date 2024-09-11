@@ -12,7 +12,12 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class PrecoDaHoraService {
+    private static final Logger logger = LoggerFactory.getLogger(PrecoDaHoraService.class);
+
     private final PrecoDaHora precoDaHora;
     private final String latitude;
     private final String longitude;
@@ -47,15 +52,17 @@ public class PrecoDaHoraService {
                 JSONObject produtoResponse = buscarProdutos(codigoProduto);
                 imprimirProdutos(produtoResponse);
             } else {
-                System.out.println("Nenhum código de produto encontrado para o termo: " + termo);
+                logger.info("Nenhum código de produto encontrado para o termo: {}", termo);
             }
         } catch (IOException e) {
-            System.err.println("Erro ao fazer a requisição para a API: " + e.getMessage());
-            e.printStackTrace();
+            logger.error("Erro ao fazer a requisição para a API: {}", e.getMessage(), e);
+        } catch (InterruptedException e) {
+            logger.error("Requisição interrompida: {}", e.getMessage(), e);
+            Thread.currentThread().interrupt();
         }
     }
 
-    private String obterCodigoProduto(String termo) throws IOException {
+    private String obterCodigoProduto(String termo) throws IOException, InterruptedException {
         Map<String, String> parametrosSugestao = new HashMap<>();
         parametrosSugestao.put(PARAM_ITEM, termo);
 
@@ -73,7 +80,7 @@ public class PrecoDaHoraService {
         return null;
     }
 
-    private JSONObject buscarProdutos(String codigoProduto) throws IOException {
+    private JSONObject buscarProdutos(String codigoProduto) throws IOException, InterruptedException {
         Map<String, String> parametrosProduto = new HashMap<>();
         parametrosProduto.put(PARAM_GTIN, codigoProduto);
         parametrosProduto.put(PARAM_HORAS, "72");
@@ -89,22 +96,21 @@ public class PrecoDaHoraService {
     }
 
     private void imprimirProdutos(JSONObject produtoResponse) {
-    try {
-        if (produtoResponse.has("resultado") && produtoResponse.getJSONArray("resultado").length() > 0) {
-            JSONArray resultados = produtoResponse.getJSONArray("resultado");
-            IntStream.range(0, resultados.length())
-                .mapToObj(resultados::getJSONObject)
-                .forEach(resultado -> {               
-                    System.out.println(resultado.toString(2)); 
-                });
-        } else {
-            System.out.println("Nenhum produto encontrado.");
+        try {
+            if (produtoResponse.has("resultado") && produtoResponse.getJSONArray("resultado").length() > 0) {
+                JSONArray resultados = produtoResponse.getJSONArray("resultado");
+                IntStream.range(0, resultados.length())
+                    .mapToObj(resultados::getJSONObject)
+                    .forEach(resultado -> {               
+                        System.out.println(resultado.toString(2)); 
+                    });
+            } else {
+                logger.info("Nenhum produto encontrado.");
+            }
+        } catch (JSONException e) {
+            logger.error("Erro ao processar o JSON: {}", e.getMessage(), e);
+        } catch (Exception e) {
+            logger.error("Erro inesperado: {}", e.getMessage(), e);
         }
-    } catch (JSONException e) {
-        System.err.println("Erro ao processar o JSON: " + e.getMessage());
-    } catch (Exception e) {
-        System.err.println("Erro inesperado: " + e.getMessage());
     }
-}
-
 }
