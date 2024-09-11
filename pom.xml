@@ -10,32 +10,21 @@
     <packaging>jar</packaging>
 
     <dependencies>
-       
+        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.15.2</version> 
         </dependency>
-
-        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.15.2</version> 
         </dependency>
-
-        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.15.2</version> 
-        </dependency>
-
-        
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.14</version> 
         </dependency>
 
         
@@ -50,6 +39,18 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20210307</version>
+        </dependency>
+
+        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.7</version>
         </dependency>
     </dependencies>
 
