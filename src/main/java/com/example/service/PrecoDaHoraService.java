@@ -3,15 +3,12 @@ package com.example.service;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.example.core.PrecoDaHora;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.IntStream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +31,10 @@ public class PrecoDaHoraService {
     private static final String PARAM_PRECOMIN = "precomin";
     private static final String PARAM_ORDENAR = "ordenar";
     private static final String PARAM_PAGINA = "pagina";
+    private static final String PARAM_PROCESSO = "processo";
+    private static final String PARAM_TOTAL_REGISTROS = "totalRegistros";
+    private static final String PARAM_TOTAL_PAGINAS = "totalPaginas";
+    private static final String PARAM_PAGEVIEW = "pageview";
 
     public PrecoDaHoraService(PrecoDaHora precoDaHora, String latitude, String longitude) {
         this.precoDaHora = precoDaHora;
@@ -91,6 +92,10 @@ public class PrecoDaHoraService {
         parametrosProduto.put(PARAM_PRECOMIN, "0");
         parametrosProduto.put(PARAM_ORDENAR, "preco.asc");
         parametrosProduto.put(PARAM_PAGINA, "1");
+        parametrosProduto.put(PARAM_PROCESSO, "carregar");
+        parametrosProduto.put(PARAM_TOTAL_REGISTROS, "0");
+        parametrosProduto.put(PARAM_TOTAL_PAGINAS, "0");
+        parametrosProduto.put(PARAM_PAGEVIEW, "lista");
 
         return precoDaHora.post(API_PRODUTOS, parametrosProduto);
     }
