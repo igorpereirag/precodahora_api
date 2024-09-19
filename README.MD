@@ -20,7 +20,7 @@ Os dados apresentados são oriundos das Notas Fiscais do Consumidor Eletrônicas
 ## Funcionalidades da implementação
 
 - Busca de produtos por nome ou código GTIN.
-- Retorno de informações de preço com base na localização geográfica fornecida.
+- Retorno de informações de preços com base em parâmetros fornecidos.
 - Exibição de dados JSON formatados da API, incluindo informações sobre o produto e o estabelecimento.
 
 ## Pré-requisitos
@@ -52,20 +52,6 @@ public class Main {
     }
 }
 ```
-
-### Explicação das Classes
-
-#### `PrecoDaHora.java`
-Essa classe realiza as seguintes funções:
-- **Autenticação**: Coleta os cookies e o token CSRF necessários para realizar requisições POST.
-- **Requisições HTTP**: Realiza requisições POST para enviar parâmetros como o termo de busca, código GTIN, coordenadas, etc.
-
-#### `PrecoDaHoraService.java`
-Essa classe gerencia a lógica de busca:
-- **Buscar Produto**: Envia uma requisição para obter o código GTIN de um produto baseado em um termo de busca.
-- **Requisição de Preços**: Usa o GTIN para buscar o preço e detalhes dos produtos nas proximidades da localização informada (latitude e longitude).
-- **Exibição**: Formata e exibe o resultado da API como JSON.
-
 ### Parâmetros de Requisição
 
 Na requisição de produtos, os seguintes parâmetros são enviados:
